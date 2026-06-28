@@ -1,107 +1,71 @@
-# 📊 Employee Performance & Productivity Analysis
+# Employee Performance & Productivity Analysis
 
-## 📌 Project Overview
-This project focuses on analyzing employee performance and productivity using data analysis techniques. The main objective is to identify key factors that influence employee productivity and provide data-driven insights for improvement.
+Exploratory data analysis of an HR dataset (300 employees) to understand the drivers of
+**employee performance** and **productivity**, using Python (pandas, matplotlib, seaborn, plotly).
 
-A custom productivity metric was created using performance rating, job satisfaction, and training hours to better evaluate employee efficiency.
+## Project overview
 
----
+The project answers questions such as:
 
-## 🎯 Objectives
-- Analyze employee performance data  
-- Define and calculate a productivity metric  
-- Identify factors influencing employee productivity  
-- Analyze patterns and relationships in the data  
-- Provide actionable insights and recommendations  
+- Which departments, job roles, and age groups have the highest performance ratings?
+- How do gender, remote-work percentage, and job satisfaction relate to performance?
+- What factors most strongly correlate with a composite **Productivity Score**?
+- Who are the top and bottom performers, and how is productivity distributed?
 
----
+A custom **Productivity Score** is engineered from performance rating, job satisfaction,
+and (normalized) training hours:
 
-## 🛠️ Tools & Technologies
-- Python  
-- Pandas  
-- NumPy  
-- Matplotlib  
-- Seaborn  
-- Plotly  
+```
+Productivity_Score = 0.5 * Performance Rating
+                   + 0.3 * Job Satisfaction Score
+                   + 0.2 * Training_norm
+```
 
----
+## Dataset
 
-## 📂 Dataset Description
-The dataset includes the following employee details:
-- Employee ID  
-- Age  
-- Gender  
-- Department  
-- Job Role  
-- Salary  
-- Experience (Years)  
-- Job Satisfaction Score  
-- Training Hours (Per Year)  
-- Remote Work Percentage  
-- Performance Rating  
+`data/HR_Employee_Performance_Dataset.xlsx` — 300 rows, 18 columns including department,
+job role, experience, age, gender, salary, bonus, training hours, job satisfaction,
+remote-work %, and promotion status.
 
----
+## How to run
 
-## ⚙️ Productivity Metric
-A custom **Productivity Score** was created using the following factors:
-- Performance Rating  
-- Job Satisfaction Score  
-- Training Hours (normalized)  
+```bash
+# 1. (optional) create a virtual environment
+python -m venv .venv
+.venv\Scripts\activate        # Windows
+# source .venv/bin/activate   # macOS / Linux
 
-This score represents overall employee efficiency and contribution.
+# 2. install dependencies
+pip install -r requirements.txt
 
----
+# 3. launch the notebook
+jupyter notebook Performance_Productivity_Analysis_project.ipynb
+```
 
-## 🔍 Analysis Steps
-1. Data loading and exploration  
-2. Data cleaning and preprocessing  
-3. Feature engineering (Age groups, Satisfaction categories, Productivity score)  
-4. Exploratory Data Analysis (EDA)  
-5. Data visualization  
-6. Correlation and pattern analysis  
-7. Insight generation  
+## Project structure
 
----
+```
+employee_performanceAndProductivity_analysis/
+├── Performance_Productivity_Analysis_project.ipynb   # main analysis notebook
+├── data/
+│   └── HR_Employee_Performance_Dataset.xlsx          # source dataset
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
 
-## 📊 Key Insights
-- Employee productivity is strongly influenced by job satisfaction and experience  
-- Employees with higher satisfaction levels tend to be more productive  
-- Training has a positive impact on productivity  
-- Salary increases with experience but does not strongly affect productivity  
-- Moderate remote work contributes positively to performance  
-- Productivity is fairly balanced across genders  
-- Some departments show higher productivity, indicating better work environments  
+## Key steps in the notebook
 
----
+1. **Data loading & inspection** — shape, dtypes, summary stats, missing-value check.
+2. **Feature engineering** — age groups, remote-work groups, satisfaction categories,
+   experience groups, normalized training hours, and the composite Productivity Score.
+3. **KPIs** — employee count, average experience, average performance rating,
+   average salary, total training hours.
+4. **Performance analysis** — charts by department, job role, age, gender, satisfaction,
+   and remote work, plus a correlation heatmap.
+5. **Productivity analysis** — productivity by department/age/gender, correlation with key
+   factors, top/bottom performers, and productivity-level distribution.
 
-## 📈 Visualizations Used
-- Bar plots  
-- Scatter plots  
-- Box plots  
-- Correlation heatmap  
+## Tools
 
----
-
-## 🧠 Conclusion
-The analysis shows that employee productivity depends on multiple factors, especially job satisfaction, training, and experience. Organizations should focus on improving these areas to enhance overall performance and efficiency.
-
----
-
-## 🚀 Future Scope
-- Apply machine learning models for productivity prediction  
-- Build an interactive dashboard (Power BI / Tableau)  
-- Perform deeper statistical analysis  
-
----
-
-## ▶️ How to Run
-1. Clone this repository  
-2. Install required libraries:
-   pip install pandas numpy matplotlib seaborn plotly
-3. Open the Jupyter Notebook  
-4. Run all cells  
-
----
-
-## 🙌 Acknowledgment
-This project was completed as part of an internship to apply data analysis skills in a real-world business problem.
+Python · pandas · NumPy · matplotlib · seaborn · plotly · Jupyter
